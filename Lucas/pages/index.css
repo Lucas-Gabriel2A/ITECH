@@ -1,0 +1,433 @@
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+html{
+  scroll-behavior: smooth;
+}
+.init {
+  width: 101.3%;
+  background: #030011;
+  margin: 0;
+  position: relative;
+  top: -17px;
+  left: -8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+  text-align: center;
+
+}
+
+.itechlogo {
+  position: relative;
+  top: 8px;
+  left: 60px;
+}
+
+.header__menu {
+  display: flex;
+  column-gap: 34px;
+}
+
+.header__link {
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  right: 130px;
+  top: 3px;
+}
+
+.header__link::after {
+  content: "";
+  width: 0px;
+  height: 2px;
+  background: #0C8F09;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  transition: 0.3s ease;
+
+}
+
+.header__link:hover::after {
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+li {
+  list-style: none;
+}
+
+.insta {
+  fill: rgb(255, 255, 255);
+  position: relative;
+  right: 290px;
+  margin: 10px;
+  cursor: pointer;
+
+}
+
+.facebook {
+  position: relative;
+  right: 290px;
+  margin: 10px;
+  cursor: pointer;
+  cursor: pointer;
+}
+
+.youtube {
+  position: relative;
+  right: 290px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+
+.social {
+  display: inline;
+  column-gap: 34px;
+
+
+}
+
+
+.image {
+  box-sizing: border-box;
+  position: relative;
+  left: -8px;
+  top: -17px;
+  margin: 0;
+
+  /* width: 100%; */
+  background: linear-gradient(179.76deg, rgba(1, 87, 0, 0.799) 44%, #030011bc 100%), url(/images/fotowelcome.jpeg);
+
+  width: 101.3%;
+  opacity: 0.6;
+  background-size: 101.2%;
+  border: none;
+  /* filter: blur(2px); */
+  height: 500px;
+
+}
+
+
+.process {
+  position: absolute;
+  width: 887px;
+  height: 60px;
+  left: 200px;
+  top: 148px;
+  opacity: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 60px;
+  /* identical to box height, or 136% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+  white-space: nowrap;
+  /* text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3); */
+}
+
+.arrow {
+  position: relative;
+  top: 40vh;
+  left: 88vh;
+  cursor: pointer;
+}
+
+.arrowpage {
+
+  position: relative;
+  top: 345.5px;
+}
+
+
+.newsolutions {
+  font-family: inter;
+
+  align-items: center;
+}
+
+.nossassolucoes {
+  margin: 6vh;
+  margin-left: 15vh;
+  font-family: inter;
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: inter;
+  src: local(inter), url(fonts/inter.ttf);
+}
+
+.textsolutions {
+  margin-left: 15vh;
+  text-align: left;
+  margin-top: -36px;
+}
+
+
+/* .check{
+width: 20%;
+height: 50vh;
+  background: linear-gradient(90deg, #025700 0%, #030011 100%);
+  border-radius: 5px;
+  margin-left: 30vh;
+  top: 210px;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+} */
+
+.check3:hover {
+  transform: translateY(-0.5rem) scale(1.0125);
+  box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
+
+}
+
+.check1:hover {
+  transform: translateY(-0.5rem) scale(1.0125);
+  box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
+
+}
+
+.check:hover {
+  transform: translateY(-0.5rem) scale(1.0125);
+  box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
+
+}
+
+.check2:hover {
+  transform: translateY(-0.5rem) scale(1.0125);
+  box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
+
+}
+
+.checksystem {
+  position: relative;
+  top: 13vh;
+  margin-left: 85px;
+}
+
+.checksystemtext {
+  position: relative;
+  top: 120px;
+  font-family: inter;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.cards {
+  cursor: pointer;
+  display: flex;
+  margin-left: 200px;
+
+}
+
+.check,
+.check1,
+.check2,
+.check3 {
+  width: 200px;
+  height: 40vh;
+  background: linear-gradient(90deg, #025700 0%, #030011 100%);
+  border-radius: 5px;
+  margin-left: 4vh;
+
+  /* flex: 0.5; */
+}
+
+
+
+.checksystem {
+  position: relative;
+  width: 80px;
+  left: -20px;
+  object-position: center;
+}
+
+.checksystemtext {
+  margin-top: 5px;
+  /* Opcional: adicione espaço entre a imagem e o texto */
+}
+
+
+.experience {
+  /* display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 10px 30.72px 10px 31px; */
+
+  position: relative;
+  width: 254.72px;
+  height: 35px;
+  left: calc(46% - 254.72px/2 + 46.36px);
+  top: 60px;
+
+  background: #025700;
+  box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  font-family: inter;
+  border: none;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 15px;
+  cursor: pointer;
+  color: white;
+}
+
+.nositech {
+  box-sizing: border-box;
+  position: relative;
+  left: -8px;
+  top: 15vh;
+  margin: 0;
+  text-align: center;
+  /* width: 100%; */
+  background: linear-gradient(170deg, #00000000 0%, #013201 120%), url(/images/somositech.jpeg);
+  font-family: inter;
+  font-size: 15px;
+  font-weight: 500;
+  width: 101.3%;
+  opacity: 1;
+  background-size: 101.2%;
+  border: none;
+  /* filter: blur(2px); */
+  height: 400px;
+}
+
+
+
+.somosnositech {
+  position: absolute;
+  width: 887px;
+  height: 60px;
+  left: 130px;
+  top: 90px;
+  opacity: 100%;
+  font-family: inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 60px;
+  color: white;
+  text-align: center;
+}
+
+.itechzin {
+  position: relative;
+  top: 18px;
+  margin-bottom: 3px;
+}
+
+.divisor {
+  position: relative;
+  top: 84px;
+}
+
+.nossahistoria {
+  position: relative;
+  font-family: inter;
+  font-weight: 900;
+  margin-left: 15vh;
+  top: 100px;
+}
+
+.texthistoria {
+  position: relative;
+  margin-left: 15vh;
+  top: 90px;
+  font-family: inter;
+  text-align: left;
+
+}
+
+
+.depoimento {
+  box-sizing: border-box;
+  position: relative;
+  left: -8px;
+  top: 120px;
+  margin: 0;
+  /* width: 100%; */
+  background: linear-gradient(179.76deg, rgba(1, 87, 0, 0.775) 44%, #0300115f 100%), url(/images/fundodepo.jpeg);
+  width: 101.3%;
+  opacity: 1;
+  background-size: 101.2%;
+  border: none;
+  /* filter: blur(2px); */
+  height: 500px;
+}
+
+.depoimentomeu {
+  color: white;
+  font-family: inter;
+  position: relative;
+  text-align: center;
+  top: 2vh;
+}
+
+
+.img {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+
+
+
+
+.buttonenviar{
+
+font-family: inter;
+font-weight: 600;
+font-size: 14px;
+color: #000000;
+background-color: #ffffff;
+padding: 10px 30px;
+border: solid #000000 2px;
+box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+border-radius: 13px 26px 0px 42px;
+transition : 448ms;
+transform: translateY(0);
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+text-transform: uppercase;
+position: relative;
+margin-left: 50%;
+top: 10vh;
+}
+
+.buttonenviar:hover{
+
+transition : 448ms;
+padding: 10px 50px;
+transform : translateY(-0px);
+background-color: #fff;
+color: #025700;
+border: solid 2px #048000;
+}
+
+.imagecontainer{
+  display: flex;
+  justify-content: space-between;
+}
+

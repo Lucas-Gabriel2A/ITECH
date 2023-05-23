@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checklist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1, h3 {
+      text-align: center;
+    }
+    
+    form {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+    
+    .button-container {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    .button-container button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Checklist</h1>
+    
+    <form id="userInfoForm">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" required>
+      
+      <label for="role">Função na empresa:</label>
+      <input type="text" id="role" required>
+      
+      <label for="employeeCode">Código de funcionário:</label>
+      <input type="number" id="employeeCode" required>
+      
+      <div class="button-container">
+        <button type="button" onclick="startChecklist()">Iniciar Checklist</button>
+      </div>
+    </form>
+    
+    <h3 id="welcomeMessage" style="display: none;"></h3>
+    
+    <table id="checklistTable" style="display: none;">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Conforme</th>
+          <th>Não Conforme</th>
+        </tr>
+      </thead>
+      <tbody id="checklistItems">
+        <!-- Exemplo de item -->
+        <tr>
+          <td>Item 1</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <!-- Adicione mais itens aqui -->
+      </tbody>
+    </table>
+    
+    <div class="button-container">
+      <button type="button" onclick="addChecklistItem()">Adicionar Item</button>
+    </div>
+  </div>
+
+  <script>
+    function startChecklist() {
+      const name = document.getElementById('name').value;
+      const role = document.getElementById('role').value;
+      const employeeCode = document.getElementById('employeeCode').value;
+
+      if (name !== '' && role !== '' && employeeCode !== '') {
+        document.getElementById('userInfoForm').style.display = 'none';
+        document.getElementById('welcomeMessage').innerHTML = `Bem-vindo(a), ${name}!`;
+        document.getElementById('welcomeMessage').style.display = 'block';
+        document.getElementById('checklistTable').style.display = 'table';
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    }
+    
+    function addChecklistItem() {
+      const tableBody = document.getElementById('checklistItems');
+      const newItemRow = document.createElement('tr');
+      
+      const newItemName = document.createElement('td');
+      newItemName.textContent = 'Novo Item';
+      
+      const newItemConforme = document.createElement('td');
+      const conformeCheckbox = document.createElement('input');
+      conformeCheckbox.type = 'checkbox';
+      newItemConforme.appendChild(conformeCheckbox);
+      
+      const newItemNaoConforme = document.createElement('td');
+      const naoConformeCheckbox = document.createElement('input');
+      naoConformeCheckbox.type = 'checkbox';
+      newItemNaoConforme.appendChild(naoConformeCheckbox);
+      
+      newItemRow.appendChild(newItemName);
+      newItemRow.appendChild(newItemConforme);
+      newItemRow.appendChild(newItemNaoConforme);
+      
+      tableBody.appendChild(newItemRow);
+    }
+  </script>
+</body>
+</html>
