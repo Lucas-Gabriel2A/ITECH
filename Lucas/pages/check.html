@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+  <title>Checklist</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    body {
+      font-family: "inter", sans-serif;
+      background: 
+#001B09;
+      height: 640px;
+    }
+
+    .container::before {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 70%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: 0;
+      background: rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #000000;
+      font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 15px;
+color: black;
+    }
+
+    th {
+      background: rgba(0, 138, 55, 0.1);
+     
+;
+      font-weight: bold;
+    }
+
+    tr {
+      color: rgb(0, 0, 0);
+      font-weight: 400;
+        font-family: inter;    }
+
+    thead {
+   
+    }
+
+    th {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #003a8a;
+      color: #000000;
+      font-family: 'Inter';
+font-style: normal;
+font-weight: 600
+    }
+
+    .button-container {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+@font-face {
+  font-family: inter;
+  src: url(/pages/fonts/inter.ttf);
+}
+    .button-container button {
+      padding: 10px 20px;
+      background-color: #0B4D00;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius: 4px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .meubutton {
+      color: #ffffff;
+      background-color: #007a08;
+      font-size: 15px;
+      border: 1px solid #328f00;
+      border-radius: 10px;
+      padding: 10px 25px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .meubutton a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .edit-button {
+      padding: 6px 12px;
+      background-color: #006d0d;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-right: 15px
+    }
+
+    .edit-button:hover {
+      background-color: #006d0d;
+    }
+
+    .delete-button {
+      padding: 6px 12px;
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-right: 15px
+    }
+
+    .delete-button:hover {
+      background-color: #c82333;
+    }
+    .userInfoForm{
+      display: flex;
+  justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+
+ 
+  <body>
+    <img src="/images/itechzin.png" alt="" width="5%">
+    <div class="container">
+  
+      <h1 style="font-family: inter;font-weight: 600;">CHECK SYSTEM</h1>
+      <form style="text-align: center;" id="userInfoForm">
+        <label for="name" style="position: relative;right: 17ch;">Nome:</label>
+        <input  type="text" id="name" required>
+  
+        <label for="role"  style="position: relative;right: 17ch;">Cargo:</label>
+        <input type="text" id="role" required>
+  
+        <label for="employeeCode"  style="position: relative;right: 10.8ch;">Código de identificação:</label>
+        <input type="number" id="employeeCode" required>
+  
+        <div class="button-container">
+          <button type="button" onclick="startChecklist()">Iniciar Checklist</button>
+        </div>
+      </form>
+   
+      <h3 style="font-family: inter;" id="welcomeMessage" style="display: none;"></h3>
+  
+      <table id="checklistTable" style="display: none;">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Conforme</th>
+            <th>Não Conforme</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="checklistItems">
+          <!-- Exemplo de item -->
+          <tr>
+            <td>Item 1</td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td>
+              <button type="button" class="edit-button" onclick="editItem(this)">Editar</button>
+              <button type="button" class="delete-button" onclick="deleteItem(this)">Excluir</button>
+            </td>
+          </tr>
+          <!-- Adicione mais itens aqui -->
+        </tbody>
+      </table>
+  
+      <div class="button-container">
+        <button type="button" id="additem" onclick="openModal()">Adicionar Item</button>
+        <button type="button" id="printButton" onclick="printChecklist()" class="hidden">Imprimir Checklist</button>
+      </div>
+  
+      <div id="addItemModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <label for="newItemName">Novo Item:</label>
+          <input type="text" id="newItemName">
+          <div class="button-container">
+            <button type="button" onclick="saveNewItem()">Salvar</button>
+            <button type="button" onclick="closeModal()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <script>
+    let name, role, employeeCode;
+
+    function startChecklist() {
+      name = document.getElementById('name').value;
+      role = document.getElementById('role').value;
+      employeeCode = document.getElementById('employeeCode').value;
+
+      if (name !== '' && role !== '' && employeeCode !== '') {
+        document.getElementById('userInfoForm').style.display = 'none';
+        document.getElementById('welcomeMessage').innerHTML = `Bem-vindo(a), ${name}!`;
+        document.getElementById('welcomeMessage').style.display = 'block';
+        document.getElementById('checklistTable').style.display = 'table';
+        document.getElementById('printButton').classList.remove('hidden');
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    }
+
+    function addChecklistItem() {
+  const tableBody = document.getElementById('checklistItems');
+  const newItemRow = document.createElement('tr');
+
+  const newItemName = document.createElement('td');
+  newItemName.textContent = 'Novo Item';
+
+  const newItemConforme = document.createElement('td');
+  const conformeCheckbox = document.createElement('input');
+  conformeCheckbox.type = 'checkbox';
+  newItemConforme.appendChild(conformeCheckbox);
+
+  const newItemNaoConforme = document.createElement('td');
+  const naoConformeCheckbox = document.createElement('input');
+  naoConformeCheckbox.type = 'checkbox';
+  newItemNaoConforme.appendChild(naoConformeCheckbox);
+
+  const newItemActions = document.createElement('td');
+
+  const editButton = document.createElement('button');
+  editButton.textContent = 'Editar';
+  editButton.type = 'button';
+  editButton.classList.add('edit-button');
+  editButton.addEventListener('click', function() {
+    editItem(this);
+  });
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Excluir';
+  deleteButton.type = 'button';
+  deleteButton.classList.add('delete-button');
+  deleteButton.addEventListener('click', function() {
+    deleteItem(this);
+  });
+
+  newItemActions.appendChild(editButton);
+  newItemActions.appendChild(deleteButton);
+
+  newItemRow.appendChild(newItemName);
+  newItemRow.appendChild(newItemConforme);
+  newItemRow.appendChild(newItemNaoConforme);
+  newItemRow.appendChild(newItemActions);
+
+  tableBody.appendChild(newItemRow);
+}
+
+function editItem(button) {
+  const row = button.parentNode.parentNode;
+  const itemNameCell = row.cells[0];
+  const newItemName = prompt('Digite o novo nome do item:', itemNameCell.textContent);
+  if (newItemName) {
+    itemNameCell.textContent = newItemName;
+  }
+}
+
+function deleteItem(button) {
+  const row = button.parentNode.parentNode;
+  row.remove();
+}
+
+
+    function openModal() {
+      document.getElementById('addItemModal').style.display = 'block';
+      document.getElementById('addItemModal').style.borderRadius = '10px';
+      document.getElementById('addItemModal').style.textAlign = 'center';
+
+    }
+
+    function closeModal() {
+      document.getElementById('addItemModal').style.display = 'none';
+    }
+
+    function saveNewItem() {
+  const newItemNameInput = document.getElementById('newItemName');
+  const newItemName = newItemNameInput.value.trim();
+
+  if (newItemName) {
+    const tableBody = document.getElementById('checklistItems');
+    const newItemRow = document.createElement('tr');
+
+    const newItemNameCell = document.createElement('td');
+    newItemNameCell.textContent = newItemName;
+
+    const newItemConformeCell = document.createElement('td');
+    const conformeCheckbox = document.createElement('input');
+    conformeCheckbox.type = 'checkbox';
+    newItemConformeCell.appendChild(conformeCheckbox);
+
+    const newItemNaoConformeCell = document.createElement('td');
+    const naoConformeCheckbox = document.createElement('input');
+    naoConformeCheckbox.type = 'checkbox';
+    newItemNaoConformeCell.appendChild(naoConformeCheckbox);
+
+    const newItemActionsCell = document.createElement('td');
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Editar';
+    editButton.type = 'button';
+    editButton.addEventListener('click', function() {
+      editItem(this);
+    });
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Excluir';
+    deleteButton.type = 'button';
+    deleteButton.addEventListener('click', function() {
+      deleteItem(this);
+    });
+
+    editButton.classList.add('edit-button');
+    deleteButton.classList.add('delete-button');
+
+    newItemActionsCell.appendChild(editButton);
+    newItemActionsCell.appendChild(deleteButton);
+
+    // Adiciona espaçamento interno
+    newItemActionsCell.style.paddingRight = '10px';
+
+    newItemRow.appendChild(newItemNameCell);
+    newItemRow.appendChild(newItemConformeCell);
+    newItemRow.appendChild(newItemNaoConformeCell);
+    newItemRow.appendChild(newItemActionsCell);
+
+    tableBody.appendChild(newItemRow);
+
+    newItemNameInput.value = '';
+    closeModal();
+  } else {
+    alert('Por favor, digite o nome do novo item.');
+  }
+}
+    function printChecklist() {
+  const addButton = document.querySelector("#additem");
+  const printButton = document.querySelector("#printButton");
+  addButton.style.display = "none";
+  printButton.style.display = "none";
+
+  const currentDate = new Date();
+  const name = document.getElementById('name').value;
+  const role = document.getElementById('role').value;
+  const printDate = currentDate.toLocaleDateString();
+  const printTime = currentDate.toLocaleTimeString();
+  const item = document.querySelector("#checklistTable");
+  const header = `${name} - ${role} - \nData de Impressão: ${printDate} - Hora de Impressão: ${printTime}`;
+
+  const opt = {
+    margin: 1,
+    filename: 'RelatorioChecklist.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, dpi: 300 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  const elementToPrint = document.createElement("div");
+  elementToPrint.appendChild(document.createTextNode(header));
+  elementToPrint.appendChild(item.cloneNode(true));
+
+  html2pdf()
+    .set(opt)
+    .from(elementToPrint)
+    .save();
+
+  addButton.style.display = "inline-block";
+  printButton.style.display = "inline-block";
+}
+
+
+
+    function getCurrentDate() {
+      const date = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return date.toLocaleDateString('pt-BR', options);
+    }
+
+    function getCurrentTime() {
+      const date = new Date();
+      const options = { hour: 'numeric', minute: 'numeric', hour12: false };
+      return date.toLocaleTimeString('pt-BR', options);
+    }
+  </script>
+</body>
+
+</html>
