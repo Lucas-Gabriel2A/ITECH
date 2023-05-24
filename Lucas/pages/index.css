@@ -431,3 +431,8 @@ border: solid 2px #048000;
   justify-content: space-between;
 }
 
+
+.meubutton:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
